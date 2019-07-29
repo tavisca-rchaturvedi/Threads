@@ -1,12 +1,17 @@
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 public class Circle {
 
 
-    public static void main(String[] args){
-        AreaCalculator calculator1 = new AreaCalculator(4);
-        PerimeterCalculator calculator2 = new PerimeterCalculator(4);
-        Thread t1 = new Thread(calculator1);
-        Thread t2 = new Thread(calculator2);
-        t1.start();
-        t2.start();
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        ExecutorService service = Executors.newFixedThreadPool(2);
+        Future<Double> f1 = service.submit(new AreaCalculator(4.5));
+        Future<Double> f2 = service.submit(new PerimeterCalculator(4.5));
+        System.out.println("Area is " + f1.get());
+        System.out.println("Area is " + f2.get());
+
     }
 }

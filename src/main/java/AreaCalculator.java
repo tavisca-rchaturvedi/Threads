@@ -1,4 +1,6 @@
-public class AreaCalculator implements Runnable {
+import java.util.concurrent.Callable;
+
+public class AreaCalculator implements Callable<Double> {
 
     public double radius;
 
@@ -7,10 +9,13 @@ public class AreaCalculator implements Runnable {
     }
 
     @Override
-    public void run() {
+    public Double call() {
         System.out.println("Area is being calculated");
-        System.out.println("Area is "  + calculate(this.radius));
+        //System.out.println("Area is "  + calculate(this.radius));
+        return calculate(this.radius);
     }
+
+
 
     public double calculate(double radius){
         return 3.14*radius*radius;
