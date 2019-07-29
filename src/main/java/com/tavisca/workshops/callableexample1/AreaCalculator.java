@@ -1,3 +1,5 @@
+package com.tavisca.workshops.callableexample1;
+
 import java.util.concurrent.Callable;
 
 public class AreaCalculator implements Callable<Double> {

@@ -1,3 +1,4 @@
+package com.tavisca.workshops.callableexample1;
 import java.util.concurrent.Callable;
 
 public class PerimeterCalculator implements Callable<Double> {
