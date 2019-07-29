@@ -1,4 +1,7 @@
-public class PerimeterCalculator implements Runnable{
+package com.tavisca.workshops.callableexample1;
+import java.util.concurrent.Callable;
+
+public class PerimeterCalculator implements Callable<Double> {
 
     public double radius;
     public PerimeterCalculator(double radius){
@@ -6,10 +9,9 @@ public class PerimeterCalculator implements Runnable{
     }
 
     @Override
-    public void run() {
+    public Double call() {
         System.out.println("Perimeter is being calculated");
-
-        System.out.println("Perimeter is " + calculate(this.radius));
+        return calculate(this.radius);
     }
 
     public double calculate(double radius){
